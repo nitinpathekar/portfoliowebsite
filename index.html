@@ -1,115 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>NP Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-   
+    <!-- UNICONS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Add favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    <title>Portfolio Website</title>
 </head>
-
 <body>
-
-    <!-- Header Section -->
-    <header>
-        <nav>
-            <div class="logo">Nitin Pathekar</div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#portfolio">Work</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+    <div class="container">
+        <!-- --------------- HEADER --------------- -->
+        <nav id="header">
+            <div class="nav-logo">
+                <p class="nav-name">Pawar</p>
+                <span>.</span>
+            </div>
+            <div class="nav-menu" id="myNavMenu">
+                <ul class="nav_menu_list">
+                    <li class="nav_list">
+                        <a href="#home" class="nav-link active-link">Home</a>
+                        <div class="circle" ></div>
+                    </li>
+                    <li class="nav_list">
+                        <a href="#about" class="nav-link">About</a>
+                        <div class="circle"></div>
+                    </li>
+                    <li class="nav_list">
+                        <a href="#projects" class="nav-link">Projects</a>
+                        <div class="circle"></div>
+                    </li>
+                    <li class="nav_list">
+                        <a href="#contact" class="nav-link">Contact</a>
+                        <div class="circle"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-button">
+                <button class="btn">Download CV <i class="uil uil-file-alt"></i></button>
+            </div>
+            <div class="nav-menu-btn">
+                <i class="uil uil-bars" onclick="myMenuFunction()"></i>
             </div>
         </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <h1>Most Welcome!</h1><p id="dynamic-text"></p>
-
-        <script>
-            const textElement = document.getElementById("dynamic-text");
-            const phrases = ["Design", "Develop", "Deliver"];
-            let currentPhraseIndex = 0;
-            let currentCharIndex = 0;
-            let isDeleting = false;
-            let text = "";
-    
-            function typeEffect() {
-                if (isDeleting) {
-                    // Delete one character at a time
-                    text = phrases[currentPhraseIndex].substring(0, currentCharIndex);
-                    currentCharIndex--;
-                } else {
-                    // Add one character at a time
-                    text = phrases[currentPhraseIndex].substring(0, currentCharIndex + 1);
-                    currentCharIndex++;
-                }
-    
-                textElement.innerHTML = text + "<span class='cursor'></span>"; // Add cursor
-    
-                // If the current word is fully typed or erased, toggle the action
-                if (!isDeleting && currentCharIndex === phrases[currentPhraseIndex].length) {
-                    setTimeout(() => {
-                        isDeleting = true;
-                    }, 1000); // Wait 1 second before starting to delete
-                } else if (isDeleting && currentCharIndex === 0) {
-                    isDeleting = false;
-                    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length; // Loop through phrases
-                }
-    
-                const speed = isDeleting ? 100 : 200; // Adjust speed for typing and deleting
-                setTimeout(typeEffect, speed);
-            }
-    
-            // Start the typing effect
-            typeEffect();
-        </script>
-
-        <a href="#portfolio" class="cta-button">View My Work</a>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I am a web developer passionate about creating beautiful and functional websites. Let's explore my work!</p>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <h2>My Work</h2>
-        <div class="portfolio-grid">
-            <div class="portfolio-item" >
-                
-                <h3>Project 1: Personal Portfolio</h3>
+        <!-- -------------- MAIN ---------------- -->
+        <main class="wrapper">
+            <!-- -------------- FEATURED BOX ---------------- -->
+            <section class="featured-box" id="home">
+                <div class="featured-text">
+                    <div class="featured-text-card">
+                        <span>Nitin Sardar Pathekar </span>
+                    </div>
+                    <div class="featured-name">
+                        <p>I'm <span class="typedText"></span></p>
+                    </div>
+                    <div class="featured-text-info">
+                        <p>Welcome to My Digital Portfolio: Exploring IT, One Project at a Time
+                        </p>
+                    </div>
+                    <div class="featured-text-btn">
+                        <button class="btn blue-btn">Hire Me</button>
+                        <button class="btn">Download CV <i class="uil uil-file-alt"></i></button>
+                    </div>
+                    <div class="social_icons">
+                        <a class="icon" href="http://instagram.com/nitin_pathekar"><i class="uil uil-instagram" ></i></a>
+                        <a href='http://www.linkedin.com/in/nitin-pathekar' class="icon"><i class="uil uil-linkedin-alt"></i></a>
+                        <a href='http://www.x.com/nitin_pathekar' class="icon"><i class="uil uil-twitter"></i></a>
+                        <a href='http://www.github.com/nitin-pathekar' class="icon"><i class="uil uil-github-alt"></i></a>
+                    </div>
+                </div>
+                <div class="featured-image">
+                    <div class="image">
+                        <p style="background-color: rgb(67, 59, 121); color: #ffffff; border-radius: 25px; text-align: center;">Photo pe koi comment nhi karega</p>
+                        <img src="download.png" alt="avatar">
+                        
+                    </div>
+                </div>
+                <div class="scroll-icon-box">
+                    <a href="#about" class="scroll-btn">
+                        <i class="uil uil-mouse-alt"></i>
+                        <p>Scroll Down</p>
+                    </a>
+                </div>
+            </section>
+            <!-- -------------- ABOUT BOX ---------------- -->
+            <section class="section" id="about">
+                <div class="top-header">
+                    <h1>About Me</h1>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="about-info">
+                            <h3>My introduction</h3>
+                            <p>"I’m a 3rd-year engineering student at SATI, Vidisha. Skilled in HTML, CSS, JavaScript, I’m ready to tackle challenges, build solutions, and make an impact in the tech world."
+                            </p>
+                            <div class="about-btn">
+                                <button class="btn" href="nitinPathekarResume.docx">Download CV <i class="uil uil-import"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="skills-box">
+                            <div class="skills-header">
+                                <h3>Frontend</h3>
+                            </div>
+                            <div class="skills-list">
+                                <span>HTML</span>
+                                <span>CSS</span>
+                                <span>Bootstrap</span>
+                                <span>JavaScript</span>
+                                
+                                <span>React</span>
+                            </div>
+                        </div>
+                        <div class="skills-box">
+                            <div class="skills-header">
+                                <h3>Backend</h3>
+                            </div>
+                            <div class="skills-list">
+                                <span>PHP</span>
+                                <span>Python</span>
+                                <span>C++</span>
+                            </div>
+                        </div>
+                        <div class="skills-box">
+                            <div class="skills-header">
+                                <h3>Database</h3>
+                            </div>
+                            <div class="skills-list">
+                                <span>MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- -------------- PROJECT BOX ---------------- -->
+            <section class="section" id="projects">
+                <div class="top-header">
+                    <h1>Projects</h1>
+                </div>
+                <div class="project-container">
+                    <div class="project-box">
+                        <i class="uil uil-briefcase-alt"></i>
+                        <h3>Completed</h3>
+                        <label>0+ Finished Projects</label>
+                    </div>
+                    <div class="project-box">
+                        <i class="uil uil-users-alt"></i>
+                        <h3>Clients</h3>
+                        <label>0+ Happy Clients</label>
+                    </div>
+                    <div class="project-box">
+                        <i class="uil uil-award"></i>
+                        <h3>Experience</h3>
+                        <label>2+ Years in the field</label>
+                    </div>
+                </div>
+            </section>
+            <!-- -------------- CONTACT BOX ---------------- -->
+            <section class="section" id="contact">
+                <div class="top-header">
+                    <h1>Get in touch</h1>
+                    <span>Do you have a project in your mind, contact me here</span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="contact-info">
+                            <h2>Find Me <i class="uil uil-corner-right-down"></i></h2>
+                            <p><i class="uil uil-envelope"></i> Email: nitinsardarpathekar@gmail.com</p>
+                            <p><i class="uil uil-phone"></i> +91 9522784645</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-control">
+                            <div class="form-inputs">
+                                <input type="text" class="input-field" placeholder="Name">
+                                <input type="text" class="input-field" placeholder="Email">
+                            </div>
+                            <div class="text-area">
+                                <textarea placeholder="Message"></textarea>
+                            </div>
+                            <div class="form-button">
+                                <button class="btn">Send <i class="uil uil-message"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- --------------- FOOTER --------------- -->
+        <footer>
+            <div class="top-footer">
+                <p>Nitin Pathekar .</p>
             </div>
-            <div class="portfolio-item">
-             
-                <h3>Project 2: Real-Time Collaborative Coding Platform  </h3>
+            <div class="middle-footer">
+                <ul class="footer-menu">
+                    <li class="footer_menu_list">
+                        <a href="#home">Home</a>
+                    </li>
+                    <li class="footer_menu_list">
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="footer_menu_list">
+                        <a href="#projects">Projects</a>
+                    </li>
+                    <li class="footer_menu_list">
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
             </div>
-            
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form class="contact-form">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </section>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2024 NP. All Rights Reserved.</p>
-        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
-    </footer>
- <script src="script.js"></script>
+            <div class="footer-social-icons">
+                <div class="icon"><i class="uil uil-instagram"></i></div>
+                <div class="icon"><i class="uil uil-linkedin-alt"></i></div>
+                <div class="icon"><i class="uil uil-twitter"></i></div>
+                <div class="icon"><i class="uil uil-github-alt"></i></div>
+            </div>
+            <div class="bottom-footer">
+                <p>Copyright © <a href="#home" style="text-decoration: none;">Nitin Pathekarf</a> - All rights reserved
+                </p>
+            </div>
+        </footer>
+    </div>
+    <!-- ----- TYPING JS Link ----- -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <!-- ----- SCROLL REVEAL JS Link----- -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- ----- MAIN JS ----- -->
+    <script src="script.js"></script>
 </body>
 
 </html>

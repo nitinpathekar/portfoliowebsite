@@ -1,164 +1,111 @@
-// 1. Smooth Scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
-      });
-    });
-  });
+/* ----- NAVIGATION BAR FUNCTION ----- */
+function myMenuFunction(){
+    let menuBtn = document.getElementById("myNavMenu");
   
-  // 2. Animated Scroll Effects (ScrollReveal)
-  const observerOptions = {
-    threshold: 0.5 // Trigger when 50% of the element is in view
-  };
-  
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-  
-  // Apply animation to sections
-  document.querySelectorAll('.scroll-reveal').forEach((section) => {
-    observer.observe(section);
-  });
-  
-  // 3. Navbar Sticky Effect
-  window.onscroll = function () {
-    const navbar = document.querySelector("header");
-    if (window.pageYOffset > 100) {
-      navbar.classList.add("sticky");
+    if(menuBtn.className === "nav-menu"){
+      menuBtn.className += " responsive";
     } else {
-      navbar.classList.remove("sticky");
+      menuBtn.className = "nav-menu";
     }
-  };
-  
-  // 4. Dynamic Portfolio Filtering
-  const filterButtons = document.querySelectorAll('.filter-button');
-  filterButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      const category = this.getAttribute('data-category');
-      const items = document.querySelectorAll('.portfolio-item');
-      items.forEach(item => {
-        if (category === 'all' || item.classList.contains(category)) {
-          item.style.display = 'block';
-          item.classList.add('fade-in');
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    });
-  });
-  
-  // 5. Form Validation
-  document.querySelector('#contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    let email = document.querySelector('#email').value;
-    let name = document.querySelector('#name').value;
-    let message = document.querySelector('#message').value;
-  
-    // Basic form validation
-    if (!name || !email || !message) {
-      alert("Please fill out all fields.");
-      return;
-    }
-  
-    if (!validateEmail(email)) {
-      document.querySelector('#email-error').textContent = "Please enter a valid email.";
-    } else {
-      alert('Form submitted successfully');
-      // Reset form or trigger success message
-    }
-  });
-  
-  function validateEmail(email) {
-    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return regex.test(email);
   }
   
-  // 6. Interactive Portfolio Hover Effects
-  const portfolioItems = document.querySelectorAll('.portfolio-item');
-  portfolioItems.forEach(item => {
-    item.addEventListener('mouseenter', () => {
-      item.style.transform = "scale(1.05)";
-      item.style.boxShadow = "0 8px 15px rgba(0, 0, 0, 0.3)";
-    });
-    item.addEventListener('mouseleave', () => {
-      item.style.transform = "scale(1)";
-      item.style.boxShadow = "none";
-    });
-  });
+  /* ----- ADD SHADOW ON NAVIGATION BAR WHILE SCROLLING ----- */
+  window.onscroll = function() {headerShadow()};
   
-  // 7. Scroll to Top Button
-  const scrollToTopButton = document.getElementById("scroll-to-top");
-  window.onscroll = function () {
-    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
-      scrollToTopButton.style.display = "block";
+  function headerShadow() {
+    const navHeader =document.getElementById("header");
+  
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop >  50) {
+  
+      navHeader.style.boxShadow = "0 1px 6px rgba(0, 0, 0, 0.1)";
+      navHeader.style.height = "70px";
+      navHeader.style.lineHeight = "70px";
+  
     } else {
-      scrollToTopButton.style.display = "none";
+  
+      navHeader.style.boxShadow = "none";
+      navHeader.style.height = "90px";
+      navHeader.style.lineHeight = "90px";
+  
     }
-  };
+  }
   
-  scrollToTopButton.addEventListener("click", function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+  /* ----- TYPING EFFECT ----- */
+  let typingEffect = new Typed(".typedText",{
+    strings : ["Designer","Youtuber","Developer"],
+    loop : true,
+    typeSpeed : 100,
+    backSpeed : 80,
+    backDelay : 2000
+  })
   
-  // 8. Modal Popup for Portfolio Projects
-  document.querySelectorAll('.portfolio-item').forEach(item => {
-    item.addEventListener('click', () => {
-      let modal = document.querySelector('#portfolio-modal');
-      modal.style.display = 'block';
-      modal.querySelector('.modal-content').innerHTML = item.querySelector('.details').innerHTML;
-    });
-  });
+  /* ----- ## -- SCROLL REVEAL ANIMATION -- ## ----- */
+  const sr = ScrollReveal({
+        origin: 'top',
+        distance: '80px',
+        duration: 2000,
+        reset: true
+  })
   
-  document.querySelector('#portfolio-modal .close').addEventListener('click', () => {
-    document.querySelector('#portfolio-modal').style.display = 'none';
-  });
+  /* -- HOME -- */
+  sr.reveal('.featured-text-card',{})
+  sr.reveal('.featured-name',{delay: 100})
+  sr.reveal('.featured-text-info',{delay: 200})
+  sr.reveal('.featured-text-btn',{delay: 200})
+  sr.reveal('.social_icons',{delay: 200})
+  sr.reveal('.featured-image',{delay: 300})
   
-  // 9. Responsive Menu (Hamburger Menu)
-  const hamburger = document.querySelector('.hamburger');
-  const navLinks = document.querySelector('.nav-links');
+  /* -- PROJECT BOX -- */
+  sr.reveal('.project-box',{interval: 200})
   
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-  });
+  /* -- HEADINGS -- */
+  sr.reveal('.top-header',{})
   
-  // 10. Animations on Button Hover
-  const buttons = document.querySelectorAll('.cta-button');
-  buttons.forEach(button => {
-    button.addEventListener('mouseenter', () => {
-      button.style.transform = 'scale(1.1)';
-      button.style.transition = 'transform 0.3s ease';
-    });
-    button.addEventListener('mouseleave', () => {
-      button.style.transform = 'scale(1)';
-    });
-  });
+  /* ----- ## -- SCROLL REVEAL LEFT_RIGHT ANIMATION -- ## ----- */
   
-  // 11. Image Lazy Loading
-  const images = document.querySelectorAll('img[data-src]');
-  const lazyLoad = () => {
-    const windowHeight = window.innerHeight;
-    const offset = 200; // Load images a bit before they enter the viewport
-    images.forEach(image => {
-      const rect = image.getBoundingClientRect();
-      if (rect.top <= windowHeight + offset && rect.bottom >= -offset) {
-        image.src = image.getAttribute('data-src');
-        image.removeAttribute('data-src');
-      }
-    });
-  };
+  /* -- ABOUT INFO & CONTACT INFO -- */
+  const srLeft = ScrollReveal({
+  origin: 'left',
+  distance: '80px',
+  duration: 2000,
+  reset: true
+  })
   
-  window.addEventListener('scroll', lazyLoad);
-  lazyLoad(); // Call on page load to load images in view
+  srLeft.reveal('.about-info',{delay: 100})
+  srLeft.reveal('.contact-info',{delay: 100})
   
-  // 12. Dynamic Date and Time Display
-  document.querySelector('#year').textContent = new Date().getFullYear();
+  /* -- ABOUT SKILLS & FORM BOX -- */
+  const srRight = ScrollReveal({
+  origin: 'right',
+  distance: '80px',
+  duration: 2000,
+  reset: true
+  })
   
+  srRight.reveal('.skills-box',{delay: 100})
+  srRight.reveal('.form-control',{delay: 100})
   
+  /* ----- CHANGE ACTIVE LINK ----- */
   
+  const sections = document.querySelectorAll('section[id]')
+  function scrollActive() {
+  const scrollY = window.scrollY;
+  
+  sections.forEach(current =>{
+    const sectionHeight = current.offsetHeight,
+        sectionTop = current.offsetTop - 50,
+      sectionId = current.getAttribute('id')
+  
+    if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+  
+        document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.add('active-link')
+  
+    }  else {
+  
+      document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.remove('active-link')
+  
+    }
+  })
+  }
+  
+  window.addEventListener('scroll', scrollActive)

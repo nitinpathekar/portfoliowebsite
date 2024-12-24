@@ -7,13 +7,13 @@
     --color-white: rgb(255, 255, 255);
 
     --text-color-second: rgb(68, 68, 68);
-    --text-color-third: rgb(30, 159, 171);
+    --text-color-third: rgb(188, 85, 85);
 
-    --first-color: rgb(110, 87, 224);
-    --first-color-hover: rgb(40, 91, 212);
+    --first-color: rgb(78, 12, 80);
+    --first-color-hover: rgb(9, 104, 84);
 
-    --second-color: rgb(110, 87, 224);
-    --third-color: rgb(192, 166, 49);
+    --second-color:  rgb(9, 104, 84);
+    --third-color: rgb(113, 0, 102);
     --first-shadow-color: rgba(0, 0, 0, 0.1);
 
 }
@@ -378,7 +378,7 @@ h3{
 }
 .project-box>i{
     font-size: 50px;
-    color: #00B5E7;
+    color:  rgb(9, 104, 84);;
     margin-bottom: 25px;
 }
 .project-box label{
